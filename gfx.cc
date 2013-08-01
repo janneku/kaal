@@ -1135,12 +1135,13 @@ void begin_rendering(size_t numlights, int flags, const vec3 &light)
 		/* Hey, look! Self-modifying (shader) code */
 		for (size_t i = 0; i <= MAX_LIGHTS; ++i) {
 			char buf[sizeof simple_vs + 16];
-			sprintf(buf, simple_vs, (int) (i == 0 ? 1 : i), (int) i);
+			/* Some NVIDIA drivers can not arrays of length 1 */
+			sprintf(buf, simple_vs, std::max<int>(i, 2), (int) i);
 			simple_programs[i].load(buf, simple_fs);
 		}
 		for (size_t i = 0; i <= MAX_LIGHTS; ++i) {
 			char buf[sizeof perpixel_fs + 16];
-			sprintf(buf, perpixel_fs, (int) (i == 0 ? 1 : i), (int) i);
+			sprintf(buf, perpixel_fs, std::max<int>(i, 2), (int) i);
 			perpixel_programs[i].load(perpixel_vs, buf);
 		}
 		shadow_program.load(shadow_vs, shadow_fs);
