@@ -1,0 +1,26 @@
+KAAL - Kill All Audio and Lights
+by Pizzalaatikko
+
+You are visiting Assembly 2013 summer party in Hartwall Arena, Helsinki. 
+There is a big problem: Visitors have brought very bright lights and 
+large speakers and are reluctant to turn those off. Your mission is to 
+help the organizers to get all lights and audio switched off before a 
+compo starts, so that all visitors can enjoy the presented demos without 
+distractions. To improve your success, Pizza Box and ASM Burger have 
+open positions where you can work to get better weapons and money to buy 
+ES. You can also help the security crew to to wake up visitors sleeping 
+in forbidden areas.
+
+Program code and resources are licensed with GNU LGPL 2.1. See 
+lgpl-2.1.txt file.
+
+Platforms:
+Windows, Linux
+
+Credits:
+Janne Kulmala - Code, graphics - <janne.t.kulmala@iki.fi>
+Antti Rajamaki - Models, graphics, sounds - <amikaze@gmail.com>
+
+Tools used:
+Linux, GNU C++, mingw, Python, OpenGL, SDL, Gimp, Blender, libpng, 
+libtheora, libvorbis, libogg, git

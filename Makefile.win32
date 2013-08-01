@@ -1,0 +1,25 @@
+ROOT = /usr/i686-w64-mingw32
+OBJS = main.o gfx.o vec3.o effects.o sfx.o version.o world.o system.o game.o video.o ping.o
+CXXFLAGS = -O2 -W -Wall `$(ROOT)/bin/sdl-config --cflags` -std=c++0x
+LDFLAGS = -O2 -g `$(ROOT)/bin/sdl-config --libs` -lopengl32 -lglu32 -lglew32 -lpng16 -lz -lvorbisfile -logg -ltheora -lwsock32
+CXX = i686-w64-mingw32-g++
+CC = i686-w64-mingw32-gcc
+DATA = $(wildcard data/*)
+
+kaal.exe: $(OBJS) kaal.dat
+	$(CXX) -o $@ $(OBJS) $(LDFLAGS)
+
+kaal.dat: $(DATA)
+	./create-pack.py $(DATA)
+
+release: kaal.exe
+	rm -rf kaal-$(shell date -I)
+	mkdir kaal-$(shell date -I)
+	cp -r *.dll kaal.dat kaal.exe INTRO.txt kaal-$(shell date -I)/
+	cp kaal kaal-$(shell date -I)/kaal-ubuntu-x86_64
+	strip -s kaal-$(shell date -I)/kaal-ubuntu-x86_64
+	i686-w64-mingw32-strip -s kaal-$(shell date -I)/kaal.exe
+	zip -r kaal-$(shell date -I).zip kaal-$(shell date -I)/
+
+version.c: $(wildcard *.cc) $(wildcard *.h)
+	@echo "const char *version = \"$(shell git rev-parse HEAD|cut -c1-6)_$(shell date -I)\";" >version.c

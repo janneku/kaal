@@ -1,0 +1,45 @@
+SDL
+---
+Download SDL-1.2.15.tar.gz
+./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+make
+sudo make install
+
+GLEW
+----
+Download glew-1.8.0.tgz
+make SYSTEM=mingw GLEW_DEST=/usr/i686-w64-mingw32 \
+	CC=i686-w64-mingw32-gcc LD=i686-w64-mingw32-gcc \
+	AR=i686-w64-mingw32-ar
+sudo make install SYSTEM=mingw GLEW_DEST=/usr/i686-w64-mingw32
+
+zlib
+----
+Download zlib-1.2.8.tar.gz
+make -f win32/Makefile.gcc CC=i686-w64-mingw32-gcc \
+	AR=i686-w64-mingw32-ar RC=i686-w64-mingw32-windres
+sudo make -f win32/Makefile.gcc install DESTDIR=/usr/i686-w64-mingw32/ \
+	INCLUDE_PATH=include BINARY_PATH=bin LIBRARY_PATH=lib \
+	SHARED_MODE=1
+
+libpng
+------
+Download libpng-1.6.2.tar.gz
+./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+make
+sudo make install
+
+Ogg Vorbis
+----------
+Download libogg-1.3.0.tar.gz and libvorbis-1.3.3.tar.gz
+./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+make
+sudo make install
+
+Theora
+------
+Download libtheora-1.1.1.tar.bz2
+./configure --host=i686-w64-mingw32 --prefix=/usr/i686-w64-mingw32
+dos2unix win32/xmingw32/*.def
+make
+sudo make install
