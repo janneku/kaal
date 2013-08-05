@@ -759,39 +759,6 @@ void render_level(bool light)
 
 	glDepthMask(GL_FALSE);
 
-	/*if (light) {
-		glColor4f(0, 0, 0, 0.5);
-	} else {
-		glColor4f(1, 1, 1, 0.5);
-	}
-	glLoadIdentity();
-	{
-		GLState gl;
-		gl.enable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	for (size_t i = 0; i < lengthof(sauna_planes); ++i) {
-		glDisable(GL_CULL_FACE);
-		const Plane *plane = &sauna_planes[i];
-		glBegin(GL_TRIANGLES);
-		vec3 right = normalize(cross(plane->norm, vec3(0, 1, 0))) * RENDER_DIST;
-		vec3 up = cross(right, plane->norm);
-		for (int j = 0; j < 32; ++j) {
-			vec3 p = plane->norm * plane->pos;
-			glVertex3fv(&p.x);
-			double a = j * (M_PI / 16);
-			p = plane->norm * plane->pos + up * sin(a) +
-			    right * cos(a);
-			glVertex3fv(&p.x);
-			a = (j + 1) * (M_PI / 16);
-			p = plane->norm * plane->pos + up * sin(a) +
-			    right * cos(a);
-			glVertex3fv(&p.x);
-		}
-		glEnd();
-		glEnable(GL_CULL_FACE);
-	}
-	}*/
-
 	{
 		GLState gl;
 		gl.enable(GL_BLEND);
@@ -858,8 +825,6 @@ void render_level(bool light)
 
 		player.set_world(NULL);
 		weap.set_world(NULL);
-		gl.enable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 		GLState gl;
 		glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 		gl.enable(GL_STENCIL_TEST);
