@@ -34,6 +34,7 @@ private:
 extern int scr_width, scr_height;
 extern int quality;
 extern bool antialiasing;
+extern bool invert_mouse;
 extern Font small_font;
 extern Font large_font;
 extern Font order_font;

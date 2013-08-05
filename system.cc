@@ -20,6 +20,7 @@
 int scr_width, scr_height;
 int quality = -1;
 bool antialiasing;
+bool invert_mouse;
 Font small_font;
 Font large_font;
 Font order_font;
@@ -306,6 +307,9 @@ void load_settings()
 
 		} else if (match(p, "antialiasing")) {
 			antialiasing = strtol(p, &p, 10) > 0;
+
+		} else if (match(p, "invert_mouse")) {
+			invert_mouse = strtol(p, &p, 10) > 0;
 		}
 	}
 	fclose(f);
@@ -318,6 +322,7 @@ void write_settings()
 		return;
 	}
 	fprintf(f, "quality %d\n", quality);
-	fprintf(f, "antialiasing %d\n", antialiasing);
+	fprintf(f, "antialiasing %d\n", (int) antialiasing);
+	fprintf(f, "invert_mouse %d\n", (int) invert_mouse);
 	fclose(f);
 }

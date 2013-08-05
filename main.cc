@@ -43,6 +43,7 @@ enum {
 enum {
 	QUALITY,
 	ANTIALIASING,
+	INVERT_MOUSE,
 	SETTINGS_CLOSE,
 	SETTINGS_MENU_ITEMS
 };
@@ -454,6 +455,10 @@ bool menu()
 						antialiasing = !antialiasing;
 						break;
 
+					case INVERT_MOUSE:
+						invert_mouse = !invert_mouse;
+						break;
+
 					case SETTINGS_CLOSE:
 						memset(slide, 0, sizeof(slide));
 						active_item = -1;
@@ -605,6 +610,9 @@ bool menu()
 				if (i == ANTIALIASING) {
 					sprintf(text, "Antialiasing (needs restart): %s",
 						antialiasing ? "yes" : "no");
+				} else if (i == INVERT_MOUSE) {
+					sprintf(text, "Invert mouse: %s",
+						invert_mouse ? "yes" : "no");
 				} else if (i == QUALITY) {
 					sprintf(text, "Quality level: %d",
 						quality + 1);

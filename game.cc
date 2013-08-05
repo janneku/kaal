@@ -3274,8 +3274,9 @@ void game()
 
 		if (!paused && state != TECH_MENU && (SDL_GetAppState() & SDL_APPINPUTFOCUS)) {
 			if (mouse_ready) {
-				player_yaw += (x - scr_width / 2) * 0.005;
-				player_pitch += (y - scr_height / 2) * 0.005;
+				double speed = invert_mouse ? -0.005 : 0.005;
+				player_yaw += (x - scr_width / 2) * speed;
+				player_pitch += (y - scr_height / 2) * speed;
 				if (player_pitch < -M_PI/3) player_pitch = -M_PI/3;
 				if (player_pitch > M_PI/3) player_pitch = M_PI/3;
 			}
