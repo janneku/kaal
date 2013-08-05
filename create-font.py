@@ -1,5 +1,13 @@
 #!/usr/bin/python
+"""
+  KAAL
 
+  Copyright 2013 Janne Kulmala <janne.t.kulmala@iki.fi>,
+  Antti Rajamaki <amikaze@gmail.com>
+
+  Program code and resources are licensed with GNU LGPL 2.1. See
+  lgpl-2.1.txt file.
+"""
 import cairo
 import sys
 import math

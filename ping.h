@@ -5,6 +5,6 @@
  * Antti Rajamäki <amikaze@gmail.com>
  *
  * Program code and resources are licensed with GNU LGPL 2.1. See
- * COPYING.LGPL file.
+ * lgpl-2.1.txt file.
  */
 void ping(int time, int level);
